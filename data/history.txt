@@ -1,0 +1,11 @@
+A01;Arya Hasso;Armkreisen;7;2026-07-02
+A01;Arya Hasso;Wanddrücken;3;2026-07-02
+A03;Eliza Hasso;Katzenbuckel;3;2026-07-02
+A03;Eliza Hasso;Beckenheben;4;2026-07-02
+A02;Minnatallah Mahmoud;Gelenkmobilisation;6;2026-07-02
+A02;Minnatallah Mahmoud;Leichte Kniebeugen;8;2026-07-02
+A05;Mais Moukhtar;Wandkrabbeln;6;2026-07-02
+A05;Mais Moukhtar;Schulterkreisen;15;2026-07-02
+A02;Minnatallah Mahmoud;Gelenkmobilisation;12;2026-07-02
+A02;Minnatallah Mahmoud;Dehnübung;10;2026-07-02
+A02;Minnatallah Mahmoud;Wanddrücken;20;2026-07-06

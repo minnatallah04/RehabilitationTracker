@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    PersonDetailView.fxml
+    Diese View zeigt die Detailansicht einer ausgewählten Person.
+    Hier werden Übungen angezeigt, neue Übungen zugeordnet, Wiederholungen eingetragen
+    und Vorschläge des Reha-Assistenten angezeigt.
+    Die Logik wird im PersonDetailController gesteuert.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ProgressBar?>
+
+<BorderPane prefWidth="950" prefHeight="850" style="-fx-background-color: #dfe8f1;"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.PersonDetailController">
+
+    <!-- Kopfbereich mit Zurück-Button und Personendaten -->
+    <top>
+        <VBox spacing="6" style="-fx-background-color: #243447;">
+            <padding>
+                <Insets top="18" right="28" bottom="18" left="28"/>
+            </padding>
+
+            <Button text="← Zurück" onAction="#goBack"
+                    style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 8 16; -fx-background-radius: 8;"/>
+            <Label fx:id="personLabel" text="Patient" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Übungen, Fortschritt und zuständiges Reha-Personal" style="-fx-font-size: 14px; -fx-text-fill: #d6e4f0;"/>
+        </VBox>
+    </top>
+
+    <!-- Mittelbereich mit Übungsübersicht und Übungszuordnung -->
+    <center>
+        <HBox spacing="18">
+            <padding>
+                <Insets top="24" right="28" bottom="16" left="28"/>
+            </padding>
+
+            <!-- Linke Karte mit Übungsliste und Gesamtfortschritt -->
+            <VBox spacing="14" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #f8fafc; -fx-background-radius: 14; -fx-padding: 18;">
+
+                <Label text="Übungsübersicht"
+                       style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                <ListView fx:id="exerciseListView" style="-fx-background-color: white; -fx-border-color: #d0d7de;"/>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ProgressBar fx:id="progressBar" maxWidth="Infinity" HBox.hgrow="ALWAYS" prefHeight="18"/>
+                    <Label fx:id="progressLabel" text="0%" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Rechte Karte für neue Übungen und Reha-Assistent -->
+            <VBox spacing="14" prefWidth="320" style="-fx-background-color: #f8fafc; -fx-background-radius: 14; -fx-padding: 18;">
+                <Label text="Übung zuordnen" style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label text="Übung" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+                <ComboBox fx:id="exerciseCombo" promptText="Übung wählen" prefWidth="280" prefHeight="38"/>
+
+                <Label text="Wiederholungen" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+                <ComboBox fx:id="repetitionsCombo" promptText="Anzahl wählen" prefWidth="280" prefHeight="38"/>
+
+                <Button text="Übung hinzufügen" onAction="#addExercise" prefWidth="280" prefHeight="40"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8;"/>
+
+                <Region prefHeight="8"/>
+
+                <Label text="Reha-Assistent" style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Button text="Übungen vorschlagen" onAction="#suggestExercises" prefWidth="280" prefHeight="40"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8;"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <!-- Unterer Bereich für tägliche Eintragung und Programmausgabe -->
+    <bottom>
+        <VBox spacing="14">
+            <padding>
+                <Insets top="8" right="28" bottom="24" left="28"/>
+            </padding>
+
+            <!-- Karte für Wiederholungen, Historie und Löschfunktion -->
+            <VBox spacing="12" style="-fx-background-color: #f8fafc; -fx-background-radius: 14; -fx-padding: 18;">
+                <Label text="Tägliche Eintragung" style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <TextField fx:id="doneRepetitionsField" promptText="Erledigte Wiederholungen" prefWidth="220" prefHeight="38"
+                               style="-fx-background-radius: 8; -fx-font-size: 13px; -fx-padding: 9;"/>
+
+                    <Button text="Wiederholungen eintragen" onAction="#addDoneRepetitions" prefHeight="38"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 9 18;"/>
+                    <Button text="Historie anzeigen" onAction="#openHistory" prefHeight="38"
+                            style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 9 18;"/>
+                    <Button text="Übung löschen" onAction="#deleteSelectedExercise" prefHeight="38"
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 9 18;"/>
+                </HBox>
+
+                <!-- Programmausgaben -->
+                <Label text="Programmausgabe..." style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <TextArea fx:id="logArea" prefHeight="80" editable="false" style="-fx-font-family: 'Consolas'; -fx-font-size: 12px;"/>
+            </VBox>
+        </VBox>
+    </bottom>
+</BorderPane>
