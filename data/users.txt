@@ -1,2 +1,0 @@
-user;18;user@javafx.com;user
-Chef;30;chef@javafx.com;chef
