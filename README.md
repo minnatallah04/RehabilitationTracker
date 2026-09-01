@@ -55,6 +55,18 @@ Ziel war die Entwicklung einer strukturierten Desktop-Anwendung, mit der Rehabil
 
 Dabei lag ein besonderer Fokus auf einer übersichtlichen Softwarearchitektur, objektorientierter Programmierung und der praktischen Anwendung von JavaFX.
 
+## Screenshots
+
+### Person Details
+Übersicht der zugeordneten Rehabilitationsübungen und des aktuellen Trainingsfortschritts.
+
+![Person Details](screenshots/person-details.png)
+
+### Trainingshistorie
+Dokumentation der durchgeführten Übungen mit Wiederholungszahl und Datum.
+
+![Trainingshistorie](screenshots/history.png)
+
 ## Autorin
 
 **Minnatallah Mahmoud**  
